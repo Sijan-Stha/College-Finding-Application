@@ -1,0 +1,62 @@
+    .card-holder{
+        position: absolute;
+        margin-top: 250px;
+        margin-left: 500px;
+    }
+    .card{
+        margin-bottom: 25px;
+        background-color: #d6d8d9;
+        height: auto;
+        padding-top: 15px;
+        padding-bottom: 25px;
+    }
+        .search {
+        width: 100%;
+        height: 50px;
+        position: relative;
+        display: flex;
+      }
+      .searchTerm {
+        width: 100%;
+        border: 3px solid #00b7f5;
+        border-right: none;
+        padding: 5px;
+        border-radius: 15px 0 0 15px;
+        outline: none;
+      }
+      .searchTerm:focus {
+        color: #024380;
+      }
+      .searchButton {
+        width: 40px;
+        border: 1px solid #00b7f5;
+        background: #00b7f5;
+        text-align: center;
+        color: #eeeeee;
+        border-radius: 0 15px 15px 0;
+        cursor: pointer;
+        font-size: 20px;
+      }
+      .wrap {
+        width: 50%;
+        position: absolute;
+        top: 150px;
+        margin-left: 500px;
+      }
+
+      .filter-container{
+          position: absolute;
+          height: auto;
+          width: 22%;
+          padding-bottom: 25px;
+          margin-top: 250px;
+          margin-left: 50px;
+          background-color: white;
+          font-size: large;
+      }
+      .filter-container h2{
+          text-align: center;
+          background-color: #7abaff;
+      }
+
+

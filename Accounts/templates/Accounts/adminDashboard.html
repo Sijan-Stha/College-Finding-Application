@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/adminDashboard.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/adminSidebar.css' %}"/>
+
+
+</head>
+<body style="background: #cccccc">
+    {% include 'Accounts/adminNavbar.html' %}
+    {% block content %}
+    <div id="wrapper">
+    {% include 'Accounts/adminSidebar.html' %}
+    </div>
+     <div class="total-number">
+        <div class="counter">
+            <h1>NUMBER OF COLLEGES</h1>
+            <div class="count">
+                <span>{{ totalColleges }}</span>
+            </div>
+
+        </div>
+        <div class="counter" id="student">
+            <h1>NUMBER OF STUDENTS</h1>
+            <div class="count">
+                <span>{{ totalStudents }}</span>
+            </div>
+
+        </div>
+     </div>
+        <div class="wrapper" id="blogs">
+            <h2 class="fw-bold">VIEW AND DELETE BLOG</h2>
+        </div>
+
+            <div class="card-holder" style="top: 300px">
+                {% for j in allBlogs %}
+                <div class="card">
+
+                    {% if j.blog_image %}
+                        <img src="/media/{{ j.blog_image }}" alt="" class="card__img">
+                    {% else %}
+                        <img src="{% static 'images/blog.jpg' %}" alt="" class="card__img">
+                    {% endif %}
+                  <div class="card-contents">
+                      <div class="button">
+                        <a href="{% url 'deleteBlogDashboard' j.blog_id %}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-delete">Delete</a>
+                    </div>
+                    <h1 class="card__name">Islington College, <small>{{ j.blog_post_date }}</small></h1>
+                    <p class="title">
+                      {{ j.blog_title }}
+                      <span class="card__read-more">{{ j.blog_content }}
+                      </span>
+                    </p>
+                    <p class="read-more-btn">Read More...</p>
+
+                  </div>
+                </div>
+                {% endfor %}
+            </div>
+    {% endblock %}
+</body>
+<style>
+    .total-number{
+        height: auto;
+        width: 1200px;
+        background-color: white;
+        position: absolute;
+        margin-top: 120px;
+        margin-left: 300px;
+}
+
+    .count{
+        width: 370px;
+        background-color: rgba(158,212,224,0.94);
+        text-align: center;
+    }
+    .total-number span{
+        font-weight: bold;
+        font-size: 35px;
+
+    }
+
+    .counter{
+        display: inline-block;
+        background-color: #3498db;
+
+    }
+    .total-number #student{
+        margin-left: 400px;
+    }
+    .card-holder{
+        margin-top: 0px;
+        position: absolute;
+    }
+    #blogs{
+        margin-top: 280px;
+        text-align: center;
+        position: absolute;
+        background-color: #3498db;
+        width: 100%;
+    }
+</style>
+<script src="{% static 'js/readMore.js' %}"></script>
+
+</html>

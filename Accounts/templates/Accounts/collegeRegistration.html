@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College/School Registration</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/studentRegistration.css' %}"/>
+</head>
+<body>
+    {% include 'Accounts/navBar.html' %}
+    <div class="container">
+    <div class="title">College/School Registration</div>
+    <div class="content">
+      <form method="POST" action="#">
+            {% csrf_token %}
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">College/School Name</span>
+                <input type="text" placeholder="Enter College/School name" name="cs_name" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Contact Person Name</span>
+                <input type="text" placeholder="Enter contact person name" name="contact_person_name" required>
+              </div>
+              <div class="input-box">
+                <span class="details">E-mail</span>
+                <input type="email" placeholder="Enter contact person email" name="contact_person_email" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Phone Number</span>
+                <input type="text" placeholder="Enter contact number" name="contact_phone" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Website</span>
+                <input type="text" placeholder="Enter your website link" name="cs_website">
+              </div>
+              <div class="input-box">
+                <span class="details">Username</span>
+                <input type="text" placeholder="Enter Username" name="cs_username">
+              </div>
+              <div class="input-box">
+                <span class="details">Password</span>
+                <input type="password" placeholder="Enter your password" name="cs_password" required onchange="form.cs_confirmPassword.pattern=this.value">
+              </div>
+              <div class="input-box">
+                <span class="details">Confirm Password</span>
+                <input type="password" placeholder="Confirm your password" name="cs_confirmPassword" required pattern="">
+              </div>
+
+              <div class="select2-dropdown">
+                <span class="details">District</span>
+                <select id="districtSelect" name="cs_district" >
+                    <option value="">Select a district</option>
+                    <option value="Kathmandu">Kathmandu</option>
+                    <option value="Lalitpur">Lalitpur</option>
+                    <option value="Bhaktapur">Bhaktapur</option>
+                    <option value="Kavre">Kavre</option>
+                    <option value="Pokhara">Pokhara</option>
+                    <option value="Gorkha">Gorkha</option>
+                </select>
+              </div>
+                <style>
+                    form .select2-dropdown .details{
+                        font-size: 15px;
+                        font-weight: 500;
+                    }
+                    .user-details .select2-dropdown select {
+                        height: 45px;
+                        width: 100%;
+                        outline: none;
+                        font-size: 16px;
+                        border-radius: 5px;
+                        padding-left: 15px;
+                        border: 1px solid #ccc;
+                        border-bottom-width: 2px;
+                        transition: all 0.3s ease;
+                    }
+                    .container{
+                        top: 70%;
+                    }
+                </style>
+              <div class="input-box">
+                <span class="details">Address</span>
+                <input type="text" placeholder="Enter Address" name="cs_address">
+              </div>
+
+            </div>
+            <div class="type">
+              <input type="radio" name="cs_type" id="dot-1" value="School">
+              <input type="radio" name="cs_type" id="dot-2" value="College">
+              <span class="type-title">Organization Type</span>
+              <div class="category">
+                  <label for="dot-1">
+                <span class="dot one"></span>
+                <span class="type">School</span>
+              </label>
+              <label for="dot-2">
+                <span class="dot two"></span>
+                <span class="type">College</span>
+              </label>
+              </div>
+            </div>
+            <div class="button">
+              <input type="submit" value="Register">
+            </div>
+
+      </form>
+    </div>
+  </div>
+        {% if error == "no" %}
+            `<script type="text/javascript">
+                alert('Account Successfully Created..')
+                window.location = ('{% url 'loginPage' %}')
+            </script>
+        {% endif %}`
+        {% if error == "yes" %}
+            <script type="text/javascript">
+                alert('Username or Email Already Exists!!')
+            </script>
+        {% endif %}
+</body>
+</html>

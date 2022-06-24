@@ -1,0 +1,116 @@
+h1{
+    position: absolute;
+    font-family: "Segoe UI";
+    margin: 150px 0px 0px 290px;
+    background-color: #0f0005;
+    color: white;
+
+}
+
+.card{
+    position: absolute;
+    background-color: #cccccc;
+    box-shadow: #0f0005;
+    height:130px;
+
+}
+#card1{
+    margin: 220px 20px 10px 290px;
+}
+
+#card2{
+    margin: 220px 20px 10px 695px;
+
+}
+.card-title{
+    font-family: "Segoe UI";
+    text-align: center;
+
+}
+.card-text{
+    font-family: "Segoe UI";
+    font-weight: 500;
+    text-align: center;
+    font-size: 22px;
+    padding-top: 25px;
+}
+
+
+      .search {
+        width: 100%;
+        position: relative;
+        display: flex;
+      }
+      .searchTerm {
+        width: 100%;
+        border: 3px solid #00b7f5;
+        border-right: none;
+        padding: 5px;
+        height: 37px;
+        border-radius: 15px 0 0 15px;
+        outline: none;
+      }
+      .searchTerm:focus {
+        color: #024380;
+      }
+      .searchButton {
+        width: 40px;
+        height: 36px;
+        border: 1px solid #00b7f5;
+        background: #00b7f5;
+        text-align: center;
+        color: #eeeeee;
+        border-radius: 0 15px 15px 0;
+        cursor: pointer;
+        font-size: 20px;
+      }
+      .wrap {
+        width: 80%;
+        position: absolute;
+        top: 50%;
+          left: 10%;
+
+      }
+
+      table{
+          position: absolute;
+          margin-top: 400px;
+          background-color: white;
+      }
+
+      #box{
+          padding-top: 100px;
+      }
+
+
+
+    .dropdown {
+        position: relative;
+        display: block;
+        line-height: 3;
+        overflow: hidden;
+        border-radius: .25em;
+    }
+
+    select {
+        background: #ffffff;
+        border: 1px solid black;
+        padding: 0 0 0 .5em;
+        color: #0a0007;
+        cursor: pointer;
+        display: inline;
+    }
+
+    span{
+        font-size: 22px;
+        font-family: "Segoe UI";
+        font-weight: bold;
+
+    }
+
+    .dropdown:hover::after {
+        color: #F39C12;
+    }
+
+
+

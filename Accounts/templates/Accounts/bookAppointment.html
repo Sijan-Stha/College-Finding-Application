@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/studentRegistration.css' %}"/>
+</head>
+<body>
+    {% include 'Accounts/navBar.html' %}
+
+    <div class="container">
+    <div class="title">BOOK APPOINTMENT</div>
+    <div class="content">
+      <form method="POST" action="#">
+            {% csrf_token %}
+            {% for i in std %}
+            <div class="user-details">
+                <div class="">
+                <input type="text" value="{{ i.std_id }}" name="std_id"  required hidden = ture>
+              </div>
+            </div>
+            {% endfor %}
+              <div class="input-box">
+                <span class="details">College Name</span>
+                  <select class="dropdown" id="dropdown2" name="org_id" >
+                    <option selected disabled="true">---Select College---</option>
+                    {% for j in allCollege %}
+                    <option value="{{ j.org_id }}">{{ j.org_name }}</option>
+                    {% endfor %}
+                  </select>
+              </div>
+              <div class="input-box">
+                <span class="details">Name</span>
+                <input type="text" placeholder="Enter your Name" name="std_name" required>
+              </div>
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input type="email" placeholder="Enter your email." name="std_email" required>
+                </div>
+
+               <div class="input-box">
+                <span class="details">Reason</span>
+                   <textarea class="reason" type="text" placeholder="Enter Reason" name="reason"></textarea>
+              </div>
+              <div class="input-box">
+                <span class="details">Appointment Date</span>
+                  <input class="form-control" type="date" name="appointmentdate" required="">
+              </div>
+
+            <div class="button" style="width: 100%">
+              <input type="submit" value="Book Appointment">
+            </div>
+
+      </form>
+    </div>
+  </div>
+        {% if error == "no" %}
+            `<script type="text/javascript">
+                alert('Account Successfully Created..')
+                window.location = ('{% url 'loginPage' %}')
+            </script>
+        {% endif %}`
+        {% if error == "yes" %}
+            <script type="text/javascript">
+                alert('Username or Email Already Exists!!')
+            </script>
+        {% endif %}
+</body>
+</html>
+
+<style>
+    .container{
+        width: 400px;
+    }
+    .input-box input{
+        height: 30px;
+        width: 100%;
+    }
+    .reason{
+        height: 100px;
+        width: 100%;
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+</style>

@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Colleges</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/adminSidebar.css' %}"/>
+</head>
+<body style="background: #cccccc">
+    {% include 'Accounts/adminNavbar.html' %}
+    {% block content %}
+    <div id="wrapper">
+    {% include 'Accounts/adminSidebar.html' %}
+        <div class="page-content-wrapper" style="width: fit-content">
+                <h2 class="text-center" style="padding-top: 130px">ALL COLLEGES</h2>
+                <section id="team" class="pb-5">
+                    <div class="container">
+                    <table class="table table-dark" style="padding-top: 130px">
+                      <thead>
+                                <tr style="color: white">
+                                    <th>Name</th>
+                                    <th>Contact Person Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Website</th>
+                                    <th>District</th>
+                                    <th>Address</th>
+                                    <th>Type</th>
+                                    <th>Username</th>
+                                    <th>Password</th>
+                                </tr>
+                      </thead>
+                        <tbody>
+                                {% for i in col %}
+                                        <tr style="color: white;">
+                                            <td>{{ i.org_name}}</td>
+                                            <td>{{ i.contact_person }}</td>
+                                            <td>{{ i.contact_email }}</td>
+                                            <td>{{ i.phone_number }}</td>
+                                            <td>{{ i.org_website }}</td>
+                                            <td>{{ i.org_district }}</td>
+                                            <td>{{ i.org_address }}</td>
+                                            <td>{{ i.org_type }}</td>
+                                            <td>{{ i.cs_username }}</td>
+                                            <td>{{ i.cs_password }}</td>
+                                            <td><a href="{% url 'admin_delete_college' i.org_id i.cs_username %}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</a></td>
+                                        </tr>
+                                {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                </section>
+            </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
+
+

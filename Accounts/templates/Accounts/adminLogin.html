@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Adimin Login Page</title>
+        <link rel="stylesheet" type="text/css" href="{% static '/css/login.css' %}">
+    </head>
+    <body>
+        {% include 'Accounts/navBar.html' %}
+        {% if error == "no" %}
+            `<script type="text/javascript">
+                alert('Logged In Successfully...')
+                window.location = ('{% url 'adminDashboard' %}')
+            </script>
+        {% endif %}`
+        {% if error == "yes" %}
+            <script type="text/javascript">
+                alert('Invalid Credentials...')
+            </script>
+        {% endif%}
+
+        <div class="center">
+            <h1>Sign In</h1>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="txt_field">
+                    <input type="text" required name="username">
+                    <label>Username</label>
+                </div>
+                <div class="txt_field">
+                    <input type="password" required name="password">
+                    <label>Password</label>
+                </div>
+                <div class="pass">Forgot Password</div>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </body>
+</html>

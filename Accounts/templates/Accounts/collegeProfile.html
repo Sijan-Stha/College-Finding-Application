@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/profileCollege.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    {% include 'Accounts/collegeNavbar.html' %}
+    {% for i in org %}
+    {% block content %}
+        <div class="college-profile-head">
+            <img id="image" src="{% static 'images/IslingtonCollege.JPG'%}">"
+        </div>
+        <div class="college-info">
+            <h3 class="college-name">
+                <a href="#">
+                    {{ i.org_name }},
+                    <small>{{ i.org_district }}</small>
+                </a>
+            </h3>
+            <span class="college-address">
+                <i class="fa fa-map-marker">
+
+                </i>
+                {{ i.org_address }}
+            </span>
+            <a href="#"><button id="btn1">Chat</button></a>
+            <a href="#"><button id="btn2">Video Counselling</button></a>
+        </div>
+        <div class="profile-container">
+            <div id="college-details" class="section-content" style="height: auto">
+                    <div class="section-header">
+                        <h3>Overview</h3>
+                    </div>
+                <div class="section-body">
+                    <div>
+                        <p style="text-align: justify;">
+                            {{ i.org_overview }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="affiliations" class="section-content">
+                <div class="section-header">
+                    <h3>
+                        <i class="fa fa-university" aria-hidden="true">
+                        </i>
+                        Affiliations
+                    </h3>
+                </div>
+                <div class="section-body">
+                    <ul class="row list-unstyled">
+                        <li class="">{{ i.org_affiliation }}</li>
+                    </ul>
+
+                </div>
+            </div>
+            <div id="course-list" class="section-content">
+                <div class="section-header">
+                    <h3>
+                        <i class="fa fa-book" aria-hidden="true">
+                        </i>
+                        Courses Offered
+                    </h3>
+                </div>
+                <div class="section-body">
+                    <ul class="nav nav-tabs" id="main-nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#all_courses" data-toggle="tab">
+                                All
+                                <span class="badge badge-info"></span>
+                            </a>
+                            <a class="nav-link" href="#course_cat_1" data-toggle="tab">
+                                Management
+                                <span class="badge badge-info"></span>
+                            </a>
+                            <a class="nav-link" href="#course_cat_2" data-toggle="tab">
+                                IT
+                                <span class="badge badge-info"></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="all_courses" class="tab-pane fade active show">
+                                    <ul class="course-list-content">
+                                        <li class="course-list">
+                                            <a href="#">Bachelors of Business Administration(BBA)</a>
+                                        </li>
+                                        <li class="course-list">
+                                            <a href="#">Bachelors in Science of Information Technology(BSc. IT)</a>
+                                        </li>
+                                    </ul>
+                        </div>
+                        <div id="course_cat_1" class="tab-pane" role="tabpanel">
+                                    <ul class="course-list-content">
+                                        <li class="course-list">
+                                            <a href="#">Bachelors of Business Administration(BBA)</a>
+                                        </li>
+                                    </ul>
+                        </div>
+                        <div id="course_cat_2" class="tab-pane" role="tabpanel">
+                                    <ul class="course-list-content">
+                                        <li class="course-list">
+                                            <a href="#">Bachelors in Science of Information Technology(BSc. IT)</a>
+                                        </li>
+                                    </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="facilities" class="section-content">
+                <div class="section-header">
+                    <h3>
+                        <i class="fa fa-building-o" aria-hidden="true">
+                        </i>
+                        Infrastructure/Facilities
+                    </h3>
+                </div>
+                <div class="section-body">
+                    <ul class="list-inline clearfix">
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/02/Cafeteria-65x65.png" alt="Cafeteria" title="Cafeteria"><br>
+                            <span>Cafeteria</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/02/Library-65x65.jpg" alt="Library" title="Library"><br>
+                            <span>Library</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                             <img src="https://www.collegenp.com/uploads/2018/02/Sports-65x65.png" alt="Sports" title="Sports"><br>
+                            <span>Sports</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/02/WiFi-Campus-65x65.png" alt="WiFi-Campus" title="WiFi-Campus"><br>
+                            <span>Internet</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/02/Transportation-65x65.png" alt="Transportation" title="Transportation"><br>
+                            <span>Transport</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/02/Auditorium-65x65.png" alt="Auditorium" title="Auditorium"><br>
+                            <span>Auditorium </span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/02/AC-Classroom-65x65.jpg" alt="AC Classroom" title="AC Classroom"><br>
+                            <span>A/C Classrooms</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/02/Medical-Facilities-65x65.png" alt="Medical Facilities" title="Medical Facilities"><br>
+                            <span>Health Care</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/02/Conference-65x65.jpg" alt="Conference" title="Conference"><br>
+                            <span>Conference</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/02/Multimedia-65x65.jpg" alt="Multimedia" title="Multimedia"><br>
+                            <span>Multimedia</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/02/Parking-65x65.jpg" alt="Parking" title="Parking"><br>
+                            <span>Parking</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/02/Placement-65x65.jpg" alt="Placement" title="Placement"><br>
+                            <span>Placement</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/02/Counselling-65x65.jpg" alt="Counselling" title="Counselling"><br>
+                            <span>Counselling</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/11/Scholarship.png" alt="Scholarship" title="Scholarship"><br>
+                            <span>Scholarships</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/11/IT-Infrastructure-3332.png" alt="IT Infrastructure" title="IT Infrastructure"><br>
+                            <span>Computer Lab</span>
+                        </li>
+                        <li class="list-inline-item text-center">
+                            <img src="https://www.collegenp.com/uploads/2018/11/Classrooms.png" alt="Classrooms" title="Classrooms"><br>
+                            <span>Classrooms</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="contact-detail" class="section-content">
+                    <div class="section-header">
+                        <h3>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            Contact Details of Islington College
+                        </h3>
+                    </div>
+                    <div class="section-body">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                <style>.embeded_map > iframe{
+                                                    width:100% !important;
+                                                    height: 300px !important;
+                                                }</style>
+                                <div class="embeded_map">
+                                    <iframe src="{{ i.org_location }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <ul class="list-unstyled contact-details">
+                                    <li><span class="fa fa-map-marker"></span>{{ i.org_address }}, {{ i.org_district }}, Nepal</li>
+                                    <li><span class="fa fa-envelope"></span> <a href="mailto:info@caspian.edu.np">i{{ i.org_email }}</a></li>
+                                    <li><span class="fa fa-globe"></span> <a href="{{ i.org_website }}" target="_blank">{{ i.org_website }}</a></li>
+                                    <li><span class="fa fa-user"></span> Administrative Department</li>
+                                    <li><span class="fa fa-phone"></span> <a href="tel:+977-{{ i.org_phone }}">{{ i.org_phone }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+    {% endblock %}
+{% endfor %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+

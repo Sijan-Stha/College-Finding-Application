@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Blog</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static '/css/studentRegistration.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/adminSidebar.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/postBlog.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background: white">
+    {% include 'Accounts/collegeNavbar.html' %}
+    {% block content %}
+        <div id="wrapper">
+            {% include 'Accounts/collegeSidebar.html' %}
+        </div>
+        <div id="wrapper" style="padding-top: 150px">
+            <h2 class="fw-bold" style="text-align: Left; padding-left: 200px">POST BLOG</h2>
+            <form method="POST" action="#" enctype="multipart/form-data" style="position: absolute; padding-left: 50px; width: 1000px; margin-top: 50px;">
+                    {% csrf_token %}
+                    {% for i in org %}
+                    <input type="hidden" value="{{ i.org_id }}" name="org_id" required>
+                    {% endfor %}
+                    <div class="user-details">
+                      <div class="input-box">
+                        <span class="details">Blog Title</span>
+                        <input type="text" placeholder="Enter Blog Title" name="blog_title" required>
+                      </div>
+                    </div>
+                    <div class="user-details">
+                      <div class="input-box">
+                        <span class="details">Blog Content</span>
+                          <textarea type="text" placeholder="Enter Blog Content" name="blog_content"  style="height: 200px; width: 450px;"></textarea>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Image</label>
+                        <input type="file"  name="blog_image" class="form-control">
+                    </div>
+                    <div class="button" style="width: 50%">
+                      <input type="submit" value="Post">
+                    </div>
+              </form>
+        </div>
+        <div class="wrapper" id="blogs">
+            <h2 class="fw-bold">VIEW AND DELETE BLOG</h2>
+        </div>
+
+            <div class="card-holder">
+                {% for j in selfBlog %}
+                <div class="card">
+
+                    {% if j.blog_image %}
+                        <img src="/media/{{ j.blog_image }}" alt="" class="card__img">
+                    {% else %}
+                        <img src="{% static 'images/blog.jpg' %}" alt="" class="card__img">
+                    {% endif %}
+                  <div class="card-contents">
+                      <div class="button">
+                        <a href="{% url 'deleteBlog' j.blog_id %}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-delete">Delete</a>
+                    </div>
+                    <h1 class="card__name"> {{ j.college.org_name }}, <small>{{ j.blog_post_date }}</small></h1>
+                    <p class="title">
+                      {{ j.blog_title }}
+                      <span class="card__read-more">{{ j.blog_content }}
+                      </span>
+                    </p>
+                    <p class="read-more-btn">Read More...</p>
+
+                  </div>
+                </div>
+                {% endfor %}
+            </div>
+
+    {% endblock %}
+<script src="{% static 'js/readMore.js' %}"></script>
+</body>
+</html>

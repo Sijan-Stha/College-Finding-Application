@@ -1,0 +1,45 @@
+.card-container{
+    position: absolute;
+    display: inline;
+    height: auto;
+    background-color: white;
+    margin-top: 210px;
+}
+
+#all-news{
+    width: auto;
+    margin-left: 50px;
+}
+
+.card{
+    margin-top: 20px;
+}
+#all-blog{
+    width: auto;
+    margin-left: 45%;
+}
+
+.heading{
+    position: absolute;
+    display: inline-block;
+    height: auto;
+    width: auto;
+    margin-top: 150px;
+    padding: 10px;
+    background-color: #2691d9;
+}
+
+#news-heading{
+    margin-left: 50px;
+    width: 600px;
+}
+
+#blog-heading{
+    width: 750px;
+    margin-left: 45%;
+}
+.heading .h2{
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Segoe UI";
+}

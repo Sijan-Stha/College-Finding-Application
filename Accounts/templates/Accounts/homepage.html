@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/homepage.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
+</head>
+<body>
+    {% include 'Accounts/navBar.html' %}
+
+    {% block content %}
+        <div class="container">
+        <h1>Welcome to Education Board</h1>
+            <h2>Find the right College/School for you.</h2>
+
+        <div class="container2">
+            <h2 class="title">Filter by Location, Course and More.</h2>
+            <a href="{% url 'searchCollege' %}">Search for College/School</a>
+            <div class="verticalLine"></div>
+            <h2 class="title2" style="font-weight: bold; text-align: right;">Already have college in mind?</h2>
+            <form action="{% url 'searchCollegeByName' %}" method="POST">
+                {% csrf_token %}
+                <div class="wrap">
+                    <div class="search">
+                            <input type="search" required class="searchTerm"  id="searchColleges" name="collegesearch" placeholder="Search For College/School by Name">
+                            <button type="submit" class="searchButton">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                 </div>
+            </form>
+        </div>
+
+        </div>
+    {% endblock %}
+</body>
+</html>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script>
+        var availableTags = [];
+
+        $.ajax({
+            method: "GET",
+            url: "/collegeList",
+            success: function (response){
+                console.log(response);
+                availableTags = response;
+                startAutoComplete(response)
+            }
+        });
+        function startAutoComplete(availableTags){
+            $( "#searchColleges" ).autocomplete({
+            source: availableTags
+        });
+        }
+
+    </script>
+

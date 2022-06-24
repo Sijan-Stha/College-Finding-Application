@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search College/School</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/collegeSearch.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
+</head>
+<body>
+    {% include 'Accounts/navBar.html' %}
+
+    {% block content %}
+        <form method="POST">
+        {% csrf_token %}
+        <div class="filter-container">
+            <h2><i class="fa-solid fa-filter"></i>FILTER COLLEGES</h2>
+            <h3>By Location</h3>
+            <hr>
+                <label>Choose Location:</label>
+                  <select name="location" id="location-dropdown">
+                      <option selected disabled=true>Choose a Location</option>
+                      {% for l in location %}
+                          <option value="{{ l }}">{{ l }}</option>
+                      {% endfor %}
+                  </select>
+            <hr>
+            <h3>By Affiliation</h3>
+            <hr>
+                <label>Choose Affiliation:</label>
+                  <select name="affiliation" id="location-dropdown">
+                      <option selected disabled=true>Choose a Affiliation</option>
+                      {% for a in affiliation %}
+                          <option value="{{ a }}">{{ a }}</option>
+                      {% endfor %}
+                  </select>
+            <button type="submit" class="filterButton" style="display: block; background-color: #3498db; width: 100%; margin-top: 25px; font-size: 22px; font-weight: bold">
+                Filter
+            </button>
+
+        </div>
+        </form>
+        <div class="searchContent">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="wrap">
+                    <div class="search">
+                            <input type="search" required class="searchTerm"  id="searchColleges" name="collegesearch" placeholder="Search For College/School by Name">
+                            <button type="submit" class="searchButton">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                 </div>
+            </form>
+        </div>
+            <div class="card-holder">
+            {% for i in allCollege %}
+                {% if i.is_registered == True %}
+            <div class="card" id="card1" style="width: 53rem;">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="media-left">
+
+                        </div>
+                        <div class="media-body">
+                            <h3 class="college-name">
+                                <a href="{% url 'studentViewCollegeProfile' i.org_id %}" class="btn">
+                                    {{ i.org_name }},
+                                    <small>{{ i.org_district }}</small>
+                                </a>
+                            </h3>
+                            <span class="college-address">
+                                <i class="fa fa-map-marker">
+
+                                </i>
+                                {{ i.org_address }}
+                            </span>
+                        </div>
+                    </div>
+                    <p class="courses">
+                        <a>
+                            <i class="fa fa-graduation-cap fa-xs" aria-hidden="true"></i>
+                        </a>
+                        <a class="s-blocks">BBA</a>
+                        <a class="s-blocks">Bsc. IT</a>
+                    </p>
+                    <div class="button">
+                        <a href="{% url 'bookAppointment' %}"><button id="btn2">Video Counselling</button></a>
+                    </div>
+                </div>
+            </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+    {% endblock %}
+
+</body>
+</html>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script>
+        var availableTags = [];
+
+        $.ajax({
+            method: "GET",
+            url: "/collegeList",
+            success: function (response){
+                console.log(response);
+                availableTags = response;
+                startAutoComplete(response)
+            }
+        });
+        function startAutoComplete(availableTags){
+            $( "#searchColleges" ).autocomplete({
+            source: availableTags
+        });
+        }
+
+    </script>

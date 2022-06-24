@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+
+body{
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+#header {
+        position: absolute;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 1);
+        overflow: hidden;
+    }
+
+    #Logo {
+        position: absolute;
+        width: 294px;
+        top: 58px;
+        overflow: visible;
+    }
+    #Group_1 {
+        position: absolute;
+        margin-top: 10px;
+        margin-left: 1160px;
+        overflow: visible;
+        cursor: pointer;
+    }
+    #User {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        left: 116px;
+        overflow: visible;
+    }
+    #Sign_In {
+        position: absolute;
+        overflow: visible;
+        width: 95px;
+        white-space: nowrap;
+        text-align: left;
+        font-family: Segoe UI;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        color: rgba(112,112,112,1);
+    }
+
+    *{
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        list-style: none;
+        box-sizing: border-box;
+    }
+
+    .navigationBar{
+        background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        height: 62px;
+        margin-top: 57px;
+    }
+
+    nav ul{
+        float: right;
+        margin-right: 200px;
+    }
+    nav ul li{
+        display: inline-block;
+        line-height: 62px;
+
+    }
+    nav ul li a{
+        color: #0a0007;
+        padding: 13px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        font-family: Segoe UI;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 29px;
+    }

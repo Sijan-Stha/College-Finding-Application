@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NavBar</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/navBar.css' %}"/>
+</head>
+<body>
+    <div id="header">
+		<div id="Group_1">
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'logoutUser' %}"><img id="User" src="{% static 'images/user.png'%}">
+                <div id="Sign_In" style="margin-left: -20px">
+                    <span>Sign Out</span>
+                </div></a>
+            {% else %}
+                <a href="{% url 'loginPage' %}"><img id="User" src="{% static 'images/user.png'%}">
+                <div id="Sign_In">
+                    <span>Sign In</span>
+                </div></a>
+            {% endif %}
+
+	    </div>
+        <nav class="navigationBar">
+            <a href="{% url 'homepage' %}"><img id="Logo" src="{% static 'images/logo.png'%}"></a>
+            <ul>
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'searchCollege' %}">Search College</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'compareCollege' %}">Compare</a></li>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'lobby' %}">Counselling</a></li>
+                {% endif %}
+                {% if not request.user.is_authenticated %}
+                <li><a href="{% url 'loginPage' %}">College/School</a></li>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'blogNews' %}">Blog</a></li>
+                {% endif %}
+                {% if not request.user.is_authenticated %}
+                <li><a href="{% url 'adminLogin' %}">Admin</a></li>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <li><a href="#">Profile</a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/viewAppointment.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/adminSidebar.css' %}"/>
+</head>
+<body style="background: #cccccc">
+    {% block content %}
+    {% include 'Accounts/collegeNavbar.html' %}
+
+        {% include 'Accounts/collegeSidebar.html' %}
+
+        <div class="upcoming"><h2>ALL APPOINTMENTS</h2>
+    <div id="wrapper">
+        {% for i in appointment %}
+    <div class="container">
+    <div class="title">APPOINTMENT</div>
+    <div class="content">
+            <div class="user-details">
+                <div class="">
+                <input type="text" value="{{ i.appointment_id }}" name="std_id"  required hidden = ture>
+              </div>
+            </div>
+              <div class="input-box">
+                <span class="details">Name</span>
+                <input type="text" placeholder="Enter your Name" name="std_name" value="{{ i.name }}" readonly>
+              </div>
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input type="email" placeholder="Enter your email." name="std_email" value="{{ i.email }}" readonly>
+                </div>
+               <div class="input-box">
+                <span class="details">Reason</span>
+                   <textarea class="reason" type="text" placeholder="Enter Reason" name="reason" readonly>{{ i.reason }}</textarea>
+              </div>
+                <div class="input-box">
+                    <span class="details">Email</span>
+                    <input type="email" placeholder="Enter your email." name="std_email" value="{{ i.appointment_date }}" readonly>
+                </div>
+          <form method="POST" action="#">
+            {% csrf_token %}
+                <div class="input-box">
+                    <span class="details">Room Name</span>
+                    <input type="text" placeholder="Enter your email." name="roomName">
+                </div>
+            <div class="button" style="width: 100%">
+              <input type="submit" value="Send">
+            </div>
+      </form>
+    </div>
+  </div>
+        {% endfor %}
+    </div>
+</div>
+
+        {% if error == "no" %}
+            `<script type="text/javascript">
+                alert('Account Successfully Created..')
+                window.location = ('{% url 'loginPage' %}')
+            </script>
+        {% endif %}`
+        {% if error == "yes" %}
+            <script type="text/javascript">
+                alert('Username or Email Already Exists!!')
+            </script>
+        {% endif %}
+<!--<style>
+    .container{
+        width: 400px;
+        background-color: white;
+        padding: 20px;
+    }
+
+    .input-box input{
+        height: 30px;
+        width: 100%;
+    }
+    .reason{
+        height: 100px;
+        width: 100%;
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+#wrapper{
+    position: absolute;
+    display: grid;
+    grid-template-columns: 30% 30%;
+    grid-gap: 50px;
+    grid-column-gap: 150px;
+    margin-top: 130px;
+    margin-left: 20%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+.container{
+  width: 400px;
+    transform: translate(-50% , -50%);
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+.container .title{
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+.container .title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.content form .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+
+form .input-box span.details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.user-details .input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+  border-color: #9b59b6;
+}
+
+</style>-->
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

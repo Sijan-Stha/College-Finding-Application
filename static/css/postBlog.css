@@ -1,0 +1,105 @@
+:root{
+    --accent: #6c5ce7;
+    --bg: #f1c40f;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+
+.card-holder{
+  display: flex;
+  align-items: flex-start;
+  margin-left: 900px;
+  padding-top: 60px;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.card{
+  width: 50rem;
+  background-color: var(--accent);
+  color: #fff;
+  margin-right: 50px;
+
+}
+
+.card__name{
+  font-size: 1.5em;
+}
+
+.post-date{
+    font-size: 1.1em;
+}
+
+.card__img{
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+}
+
+.card-contents{
+  padding: 1rem;
+}
+
+h1{
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+
+.title{
+  font-size: 1.3em;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-family: "Segoe UI";
+    text-align: justify;
+}
+
+.card__read-more{
+    margin-top: 1rem;
+  display: block;
+  font-size: 0.8em;
+  opacity: 0;
+  height: 0;
+  transition: all 0.5s;
+
+}
+
+.card__read-more--open{
+  display: block;
+  opacity: 1;
+  height: auto;
+}
+
+.read-more-btn{
+  display: inline-block;
+  color: var(--accent);
+  background-color: #eee;
+  padding: 0.6rem 1.5rem;
+  font-size: 1em;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.read-more-btn:hover{
+  background-color: #fff;
+  box-shadow: 0 0 2rem rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+}
+
+.btn-delete{
+    float: right;
+    background-color: red;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+#blogs{
+    position: absolute;
+    top: 150px;
+    margin-left: 1100px;
+}

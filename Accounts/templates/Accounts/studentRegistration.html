@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/studentRegistration.css' %}"/>
+</head>
+<body>
+    {% include 'Accounts/navBar.html' %}
+
+    <div class="container">
+    <div class="title">Student Registration</div>
+    <div class="content">
+      <form method="POST" action="#">
+            {% csrf_token %}
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">Full Name</span>
+                <input type="text" placeholder="Enter your name" name="std_fullName" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Username</span>
+                <input type="text" placeholder="Enter your username" name="std_username" required>
+              </div>
+              <div class="input-box">
+                <span class="details">E-mail</span>
+                <input type="email" placeholder="Enter your email" name="std_email" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Phone Number</span>
+                <input type="text" placeholder="Enter your number" name="std_phone" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Password</span>
+                <input type="password" placeholder="Enter your password" name="std_password" required onchange="form.confirmStdPassword.pattern=this.value">
+              </div>
+              <div class="input-box">
+                <span class="details">Confirm Password</span>
+                <input type="password" placeholder="Confirm your password" name="confirmStdPassword" required pattern="">
+              </div>
+            </div>
+            <div class="gender-details">
+              <input type="radio" name="std_gender" id="dot-1" value="Male">
+              <input type="radio" name="std_gender" id="dot-2" value="Female">
+              <input type="radio" name="std_gender" id="dot-3" value="Others">
+              <span class="gender-title">Gender</span>
+              <div class="category">
+                  <label for="dot-1">
+                <span class="dot one"></span>
+                <span class="gender">Male</span>
+              </label>
+              <label for="dot-2">
+                <span class="dot two"></span>
+                <span class="gender">Female</span>
+              </label>
+              <label for="dot-3">
+                <span class="dot three"></span>
+                <span class="gender">Others</span>
+                </label>
+              </div>
+            </div>
+            <div class="button">
+              <input type="submit" value="Register">
+            </div>
+
+      </form>
+    </div>
+  </div>
+        {% if error == "no" %}
+            `<script type="text/javascript">
+                alert('Account Successfully Created..')
+                window.location = ('{% url 'loginPage' %}')
+            </script>
+        {% endif %}`
+        {% if error == "yes" %}
+            <script type="text/javascript">
+                alert('Username or Email Already Exists!!')
+            </script>
+        {% endif %}
+</body>
+</html>

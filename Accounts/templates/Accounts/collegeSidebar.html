@@ -1,0 +1,11 @@
+<div id="sidebar-wrapper" style="position: absolute;">
+    <ul class="sidebar-nav" >
+        {% if user.is_authenticated %}
+            <li> <a href="{% url 'editCollegeProfile' %}">Edit Profile</a></li><!-- style="color: white;background-color: grey;"-->
+            <li> <a href="#">Messages</a></li>
+            <li> <a href="{% url 'postBlog' %}">Post Blog</a></li>
+            <li> <a href="#">Add or Remove Courses</a></li>
+        {% endif %} 
+
+    </ul>
+</div>

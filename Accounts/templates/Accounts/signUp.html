@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>SignUp Page</title>
+        <link rel="stylesheet" type="text/css" href="{% static '/css/signUp.css' %}"/>
+    </head>
+    <body>
+        {% include 'Accounts/navBar.html' %}
+
+        <div class="container">
+        <div class="title">Sign UP</div>
+        <div class="content">
+            <h2>What are you?</h2>
+            <div class="button">
+                <a href="{% url 'registerCollege' %}"><input value="Register College/School"></a>
+                <a href="{% url 'student_registration' %}"><input id="btn2" value="Register Student"></a>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post and View News</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/studentRegistration.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/adminSidebar.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/postBlog.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background: white">
+    {% include 'Accounts/adminNavbar.html' %}
+    {% block content %}
+    {% include 'Accounts/adminSidebar.html' %}
+        <div id="wrapper" style="padding-top: 150px">
+            <h2 class="fw-bold" style="text-align: Left; padding-left: 200px">POST NEWS</h2>
+            <form method="POST" action="#" enctype="multipart/form-data" style="position: absolute; padding-left: 50px; width: 1000px; margin-top: 50px;">
+                    {% csrf_token %}
+                    <div class="user-details">
+                      <div class="input-box">
+                        <span class="details">News Title</span>
+                        <input type="text" placeholder="Enter News Title" name="news_headline" required>
+                      </div>
+                    </div>
+                    <div class="user-details">
+                      <div class="input-box">
+                        <span class="details">News Content</span>
+                          <textarea type="text" placeholder="Enter News Content" name="news_content" required style="height: 200px; width: 450px;"></textarea>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Image</label>
+                        <input type="file"  name="news_image" class="form-control">
+                    </div>
+                    <div class="button" style="width: 50%">
+                      <input type="submit" value="Post">
+                    </div>
+              </form>
+        </div>
+        <div class="wrapper" id="blogs">
+            <h2 class="fw-bold">VIEW AND DELETE NEWS</h2>
+        </div>
+
+            <div class="card-holder">
+                {% for j in allNews %}
+                <div class="card">
+                    {% if j.news_image %}
+                        <img src="{{ j.news_image.url }}" alt="pic" class="card__img">
+                    {% else %}
+                        <img src="{% static 'images/news.jpg' %}" alt="pic" class="card__img">
+                    {% endif %}
+                  <div class="card-contents">
+                      <div class="button">
+                        <a href="{% url 'deleteNews' j.news_id %}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-delete">Delete</a>
+                      </div>
+                    <h1 class="card__name">{{ j.news_headline }}, <small>24 March, 2022</small></h1>
+                    <p class="title">
+                      <span class="card__read-more">
+                          {{ j.news_content }}
+                      </span>
+                    </p>
+                    <p class="read-more-btn">Read More...</p>
+
+                  </div>
+                </div>
+            {% endfor %}
+            </div>
+    {% endblock %}
+<script src="{% static 'js/readMore.js' %}"></script>
+</body>
+</html>
+
+

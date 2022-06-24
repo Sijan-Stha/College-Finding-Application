@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NavBar</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/navBar.css' %}"/>
+</head>
+<body>
+    <div id="header">
+		<div id="Group_1">
+                <div id="Sign_In">
+                    <span>ADMIN PANEL</span>
+                </div></a>
+	    </div>
+        <nav class="navigationBar">
+            <a href="{% url 'homepage' %}"><img id="Logo" src="{% static 'images/logo.png'%}"></a>
+        </nav>
+    </div>
+</body>
+</html>

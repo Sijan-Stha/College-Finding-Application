@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College Navbar</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/navBar.css' %}"/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+</head>
+<body>
+    <div id="header">
+		<div id="Group_1">
+                <a href="{% url 'logoutUser' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                <div id="sign_out">
+                    <span>Sign Out</span>
+                </div></a>
+	    </div>
+        <nav class="navigationBar">
+            <a href="#}"><img id="Logo" src="{% static 'images/logo.png'%}"></a>
+            <ul>
+                <li><a href="{% url 'viewAppointment' %}">Home</a></li>
+                <li><a href="{% url 'lobby' %}">Video Counselling</a></li>
+                <li style="margin-right: 180px"><a href="{% url 'collegeProfile' %}">Profile</a></li>
+            </ul>
+        </nav>
+    </div>
+    <style>
+
+        #Group_1 i{
+            font-size: 30px;
+            padding-top: 6px;
+        }
+        #sign_out{
+            position: absolute;;
+            width: 95px;
+            white-space: nowrap;
+            text-align: left;
+            font-family: Segoe UI;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 28px;
+            color: #0a0007;
+            display: inline-block;
+        }
+    </style>
+</body>
+</html>

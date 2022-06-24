@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogs and News</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static '/css/blogNews.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/postBlog.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    {% include 'Accounts/navBar.html' %}
+
+    {% block content %}
+        <div class="heading" id="news-heading">
+            <h2 style="margin-left: 40%">All News</h2>
+        </div>
+        <div class="heading" id="blog-heading">
+            <h2 style="margin-left: 40%">All Blogs</h2>
+        </div>
+        <div class="card-all" id="all-news">
+                {% for j in allNews %}
+                <div class="card" style="width: 600px">
+                  <div class="card-contents">
+                    <h1 class="card__name">{{ j.news_headline }}, <small>24 March, 2022</small></h1>
+                    <p class="title">
+                      <span class="card__read-more">
+                          {{ j.news_content }}
+                      </span>
+                    </p>
+                    <p class="read-more-btn">Read More...</p>
+
+                  </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+        <div class="card-container" id="all-blog">
+                {% for j in allBlog %}
+                <div class="card">
+                    {% if j.blog_image %}
+                        <img src="/media/{{ j.blog_image }}" alt="" class="card__img">
+                    {% else %}
+                        <img src="{% static 'images/blog.jpg' %}" alt="" class="card__img">
+                    {% endif %}
+                  <div class="card-contents">
+                    <h1 class="card__name">Islington College, <small>{{ j.blog_post_date }}</small></h1>
+                    <p class="title">
+                      {{ j.blog_title }}
+                      <span class="card__read-more">{{ j.blog_content }}
+                      </span>
+                    </p>
+                    <p class="read-more-btn">Read More...</p>
+
+                  </div>
+                </div>
+                {% endfor %}
+            </div>
+    {% endblock %}
+<script src="{% static 'js/readMore2.js' %}"></script>
+<script src="{% static 'js/readMore3.js' %}"></script>
+</body>
+
+</html>
+<style>
+    .card-all{
+    position: absolute;
+    display: inline;
+    height: auto;
+    background-color: white;
+    margin-top: 210px;
+}
+</style>
